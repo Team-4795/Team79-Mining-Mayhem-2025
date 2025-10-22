@@ -14,5 +14,6 @@ public class DriveBase extends SubsystemBase{
         robot_DifferentialDrive = new DifferentialDrive(left_Motor, right_Motor);
     }
     public void arcadeDrive(double xSpeed, double zRotation){
+        robot_DifferentialDrive.arcadeDrive(xSpeed, zRotation);
     }
 }
