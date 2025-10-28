@@ -7,10 +7,11 @@ public class Arm extends SubsystemBase{
      private SparkMax armMotor;
 
      public Arm () {
-          armMotor = new SparkMax(0, null); // change canID
+          armMotor = new SparkMax(2, null); // change canID
      }
 
      public void setArmPower (double speed) {
           armMotor.set(speed);
      }
+     
 }
