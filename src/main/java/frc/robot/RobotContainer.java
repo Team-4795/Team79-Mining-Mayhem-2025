@@ -64,6 +64,7 @@ public class RobotContainer {
     // cancelling on release.
     m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
     m_operatorController.a().whileTrue(Commands.run(() -> arm.setArmPower(0.3), arm));
+    m_operatorController.b().whileTrue(Commands.run(() -> arm.setArmPower(-0.3), arm));
   }
 
   /**
