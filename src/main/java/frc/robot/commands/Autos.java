@@ -20,14 +20,14 @@ public final class Autos {
     public static Command exampleAuto(ExampleSubsystem subsystem) {
       return Commands.sequence(subsystem.exampleMethodCommand(), new ExampleCommand(subsystem));
     }
-    public static Command CartAuto() {
-      return Commands.sequence(Commands.run(()-> arm.setArmPower(0.3)).withTimeout(2), 
-      Commands.run(()-> arm.setArmPower(-0.3)).withTimeout(2),
-      Commands.run(()-> arm.setArmPower(0)),
-      Commands.run(()-> driveBase.arcadeDrive(0.0, 0.5)).withTimeout(5),
-      Commands.run(()-> driveBase.arcadeDrive(0.5,0.0)).withTimeout(5),
-      Commands.run(()-> driveBase.arcadeDrive(0.0,0.0)));
-  }
+    //public static Command CartAuto() {
+      //return Commands.sequence(Commands.run(()-> arm.setArmPower(0.3)).withTimeout(2), 
+      //Commands.run(()-> arm.setArmPower(-0.3)).withTimeout(2),
+     // Commands.run(()-> arm.setArmPower(0)),
+    //  Commands.run(()-> driveBase.arcadeDrive(0.0, 0.5)).withTimeout(5),
+     // Commands.run(()-> driveBase.arcadeDrive(0.5,0.0)).withTimeout(5),
+    //  Commands.run(()-> driveBase.arcadeDrive(0.0,0.0)));
+ // }
   public static Command TaxiAuto() {
     return Commands.sequence(Commands.run(()-> driveBase.arcadeDrive(0.5, 0.0)).withTimeout(5),
     Commands.run(()-> driveBase.arcadeDrive(0.0,0.0)));
