@@ -10,8 +10,8 @@ public class DriveBase extends SubsystemBase{
     DifferentialDrive robot_DifferentialDrive;
 
     public DriveBase() {
-        left_Motor = new VictorSP(0);
-        right_Motor = new VictorSP(1);
+        left_Motor = new VictorSP(1);
+        right_Motor = new VictorSP(0);
         robot_DifferentialDrive = new DifferentialDrive(left_Motor, right_Motor);
     }
     

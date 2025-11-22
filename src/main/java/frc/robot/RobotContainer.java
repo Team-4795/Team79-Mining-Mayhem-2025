@@ -66,7 +66,7 @@ public class RobotContainer {
     m_operatorController.a().whileTrue(Commands.run(() -> arm.setArmPower(0.3), arm));
     m_operatorController.b().whileTrue(Commands.run(() -> arm.setArmPower(-0.3), arm));
 
-    arm.setDefaultCommand(Commands.run(()-> arm.setArmPower(Constants.armPower)));
+    arm.setDefaultCommand(Commands.run(()-> arm.setArmPower(Constants.armPower), arm));
   }
 
   /**
