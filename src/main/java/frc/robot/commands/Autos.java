@@ -29,8 +29,8 @@ public final class Autos {
     //  Commands.run(()-> driveBase.arcadeDrive(0.0,0.0)));
  // }
   public static Command TaxiAuto() {
-    return Commands.sequence(Commands.run(()-> driveBase.arcadeDrive(0.5, 0.0)).withTimeout(5),
-    Commands.run(()-> driveBase.arcadeDrive(0.0,0.0)));
+    return Commands.sequence(Commands.run(()-> driveBase.arcadeDrive(0.5, 0.0)).withTimeout(3),
+    Commands.run(()-> driveBase.arcadeDrive(0.0,0.0)).withTimeout(5));
   }
 
   private Autos() {

@@ -4,7 +4,7 @@
 
 package frc.robot;
 
-import frc.robot.Constants.OperatorConstants;
+import frc.robot.Constants;
 import frc.robot.commands.Autos;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.Arm;
@@ -35,10 +35,10 @@ public class RobotContainer {
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
   private final CommandXboxController m_driverController =
-      new CommandXboxController(OperatorConstants.kDriverControllerPort);
+      new CommandXboxController(Constants.OperatorConstants.kDriverControllerPort);
 
   private final CommandXboxController m_operatorController =
-      new CommandXboxController(OperatorConstants.kOperatorControllerPort);    
+      new CommandXboxController(Constants.OperatorConstants.kOperatorControllerPort);    
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the trigger bindings
@@ -62,11 +62,11 @@ public class RobotContainer {
     driveBase.setDefaultCommand(Commands.run(()-> driveBase.arcadeDrive(m_driverController.getLeftY(), m_driverController.getRightX()), driveBase));
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.
-    m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
-    m_operatorController.a().whileTrue(Commands.run(() -> arm.setArmPower(0.3), arm));
-    m_operatorController.b().whileTrue(Commands.run(() -> arm.setArmPower(-0.3), arm));
+    //m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
+    m_driverController.a().whileTrue(Commands.run(() -> arm.setArmPower(0.5), arm));
+    m_driverController.b().whileTrue(Commands.run(() -> arm.setArmPower(-0.5), arm));
 
-    arm.setDefaultCommand(Commands.run(()-> arm.setArmPower(Constants.armPower), arm));
+    arm.setDefaultCommand(Commands.run(()-> arm.setArmPower(Constants.ArmConstants.armPower), arm));
   }
 
   /**
@@ -74,8 +74,15 @@ public class RobotContainer {
    *
    * @return the command to run in autonomous
    */
-  public Command getAutonomousCommand() {
-    // An example command will be run in autonomous
-    return Autos.TaxiAuto();
+
+  public Command TaxiAuto() { 
+    return Commands.sequence(Commands.run(()-> driveBase.arcadeDrive(1, 0.0)).withTimeout(3),
+    Commands.run(()-> driveBase.arcadeDrive(0.0,0.0)).withTimeout(5));
   }
+
+  public Command getAutonomousCommand() {
+     //An example command will be run in autonomous
+    return null;
+    //TaxiAuto();
+    }
 }
